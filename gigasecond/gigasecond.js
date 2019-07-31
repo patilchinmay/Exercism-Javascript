@@ -5,6 +5,7 @@
 // To print a date in GMT timezone string, use date.toUTCString()
 
 export const gigasecond = (date) => {
-  let ans = new Date(date.getTime() + 10**12);
+  let multiplier = 10**12; // 1 Gigasecond = 10**9 seconds = 10**12 miliseconds
+  let ans = new Date(date.getTime() + multiplier);
   return ans;
 };
