@@ -145,11 +145,10 @@ Forth.prototype.evaluate = function(string){
                         throw new Error('Stack empty');
                     }
                     break;
-            case (/-?[0-9]+/g.test(element) ? element.match(/-?[0-9]+/g)[0] : '0'): // Match a number and return it. If the number is not matched, the pattern returns null and the case fails. Thus return '0' to avoid null return.
+            case (/-?[0-9]+/g.test(element) ? element.match(/-?[0-9]+/g)[0] : '0'): // Match a number and return it. If the number is not matched, the pattern returns null and the case fails. Thus return '0' to avoid null return as '0' won't be matched with the input anyway. E.g. matching 'over' in this case will evaluate match against '0' as it's not a number, and thus ii isn't a match anyway. 
                 this.stack.push(Number(element));
                 break;
             default:
-                console.log(`Default Case`);
                 throw new Error('Unknown command');
         }
     }
